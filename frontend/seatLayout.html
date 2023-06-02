@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Seats | KGN air bus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 16px;
+      }
+
+      .plane {
+        margin: 20px auto;
+        max-width: 300px;
+      }
+      body {
+        background-color: #111827;
+      }
+
+      .exit {
+        position: relative;
+        height: 50px;
+      }
+      .exit:before,
+      .exit:after {
+        content: "EXIT";
+        font-size: 14px;
+        line-height: 18px;
+        padding: 0px 2px;
+        font-family: "Arial Narrow", Arial, sans-serif;
+        display: block;
+        position: absolute;
+        background: green;
+        color: white;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+      .exit:before {
+        left: 0;
+      }
+      .exit:after {
+        right: 0;
+      }
+
+      .fuselage {
+        border-right: 5px solid #d8d8d8;
+        border-left: 5px solid #d8d8d8;
+      }
+
+      ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .seats {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+      }
+
+      .seat {
+        display: flex;
+        flex: 0 0 14.28571428571429%;
+        padding: 5px;
+        position: relative;
+      }
+      .seat:nth-child(3) {
+        margin-right: 14.28571428571429%;
+      }
+      .seat input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+      }
+      .seat input[type="checkbox"]:checked + label {
+        /* background: #bada55; */
+        -webkit-animation-name: rubberBand;
+        animation-name: rubberBand;
+        animation-duration: 300ms;
+        animation-fill-mode: both;
+      }
+      .seat input[type="checkbox"]:disabled + label {
+        background: #dddddd;
+        text-indent: -9999px;
+        overflow: hidden;
+      }
+      .seat input[type="checkbox"]:disabled + label:after {
+        content: "X";
+        text-indent: 0;
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        transform: translate(-50%, 0%);
+      }
+      .seat input[type="checkbox"]:disabled + label:hover {
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+      .seat label {
+        display: block;
+        position: relative;
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 1.5rem;
+        padding: 4px 0;
+        /* background: #55f425; */
+        border-radius: 5px;
+        animation-duration: 300ms;
+        animation-fill-mode: both;
+      }
+      .seat label.available {
+        background: #55f425;
+      }
+      .seat label.unavailable {
+        background: #ff3714;
+      }
+      .seat label.reserved {
+        background: #ffdc16;
+      }
+      .seat label:before {
+        content: "";
+        position: absolute;
+        width: 75%;
+        height: 75%;
+        top: 1px;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 3px;
+      }
+      .seat label:hover {
+        cursor: pointer;
+        box-shadow: 0 0 0px 2px #5c6aff;
+      }
+
+      @-webkit-keyframes rubberBand {
+        0% {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+        30% {
+          -webkit-transform: scale3d(1.25, 0.75, 1);
+          transform: scale3d(1.25, 0.75, 1);
+        }
+        40% {
+          -webkit-transform: scale3d(0.75, 1.25, 1);
+          transform: scale3d(0.75, 1.25, 1);
+        }
+        50% {
+          -webkit-transform: scale3d(1.15, 0.85, 1);
+          transform: scale3d(1.15, 0.85, 1);
+        }
+        65% {
+          -webkit-transform: scale3d(0.95, 1.05, 1);
+          transform: scale3d(0.95, 1.05, 1);
+        }
+        75% {
+          -webkit-transform: scale3d(1.05, 0.95, 1);
+          transform: scale3d(1.05, 0.95, 1);
+        }
+        100% {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+      }
+      @keyframes rubberBand {
+        0% {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+        30% {
+          -webkit-transform: scale3d(1.25, 0.75, 1);
+          transform: scale3d(1.25, 0.75, 1);
+        }
+        40% {
+          -webkit-transform: scale3d(0.75, 1.25, 1);
+          transform: scale3d(0.75, 1.25, 1);
+        }
+        50% {
+          -webkit-transform: scale3d(1.15, 0.85, 1);
+          transform: scale3d(1.15, 0.85, 1);
+        }
+        65% {
+          -webkit-transform: scale3d(0.95, 1.05, 1);
+          transform: scale3d(0.95, 1.05, 1);
+        }
+        75% {
+          -webkit-transform: scale3d(1.05, 0.95, 1);
+          transform: scale3d(1.05, 0.95, 1);
+        }
+        100% {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+      }
+      .rubberBand {
+        -webkit-animation-name: rubberBand;
+        animation-name: rubberBand;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+      <div
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+      >
+        <a href="/" class="flex items-center">
+          <img src="/assets/logo.png" class="h-11 mr-3 invert" alt=" Logo" />
+          <span
+            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+            >KGN AIR BUS</span
+          >
+        </a>
+        <div class="flex md:order-2" id="loginButtonContainer">
+          <a href="signup.html">
+            <button
+              type="button"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Signup
+            </button>
+          </a>
+          <button
+            data-collapse-toggle="navbar-cta"
+            type="button"
+            class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-cta"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="w-6 h-6"
+              aria-hidden="true"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div
+          class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+          id="navbar-cta"
+        >
+          <ul
+            class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+          >
+            <li>
+              <a
+                href="/"
+                class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                aria-current="page"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="about.html"
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="services.html"
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                href="buses.html"
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >Our Buses</a
+              >
+            </li>
+            <li>
+              <a
+                href="contact.html"
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- headline -->
+
+    <nav class="flex mb-4" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a
+            href="/"
+            class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+          >
+            <svg
+              class="w-4 h-4 mr-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+              ></path>
+            </svg>
+            Home
+          </a>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <svg
+              class="w-6 h-6 text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <a
+              href="/buses.html"
+              class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white"
+              >Book Bus</a
+            >
+          </div>
+        </li>
+        <li aria-current="page">
+          <div class="flex items-center">
+            <svg
+              class="w-6 h-6 text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span
+              class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400"
+              >Select Seat</span
+            >
+          </div>
+        </li>
+      </ol>
+    </nav>
+    <h2
+      class="text-center mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white"
+    >
+      Select Seats
+      <span id="nameofbus" class="text-sm regular font-light"></span>
+    </h2>
+
+    <!-- BUS -->
+    <div class="plane">
+      <div class="fuselage"></div>
+      <ol class="cabin fuselage">
+        <li class="row row--1">
+          <ol class="seats" type="A">
+            <li class="seat">
+              <input type="checkbox" id="1A" />
+              <label class="available" for="1A">1A</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="1B" />
+              <label class="available" for="1B">1B</label>
+            </li>
+            <li class="seat">
+              <input type="hidden" id="1C" />
+            </li>
+            <li class="seat">
+              <input type="checkbox" disabled id="1D" />
+              <label class="available" for="1D">Occupied</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="1E" />
+              <label class="available" for="1E">1E</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="1F" />
+              <label class="available" for="1F">1F</label>
+            </li>
+          </ol>
+        </li>
+        <li class="row row--2">
+          <ol class="seats" type="A">
+            <li class="seat">
+              <input type="checkbox" id="2A" />
+              <label class="available" for="2A">2A</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="2B" />
+              <label class="available" for="2B">2B</label>
+            </li>
+            <li class="seat">
+              <input type="hidden" id="2C" />
+            </li>
+            <li class="seat">
+              <input type="hidden" id="2D" />
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="2E" />
+              <label class="available" for="2E">2E</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="2F" />
+              <label class="available" for="2F">2F</label>
+            </li>
+          </ol>
+        </li>
+        <li class="row row--3">
+          <ol class="seats" type="A">
+            <li class="seat">
+              <input type="checkbox" id="3A" />
+              <label class="available" for="3A">3A</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="3B" />
+              <label class="available" for="3B">3B</label>
+            </li>
+            <li class="seat">
+              <input type="hidden" id="3C" />
+            </li>
+            <li class="seat">
+              <input type="hidden" id="3D" />
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="3E" />
+              <label class="available" for="3E">3E</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="3F" />
+              <label class="available" for="3F">3F</label>
+            </li>
+          </ol>
+        </li>
+        <li class="row row--4">
+          <ol class="seats" type="A">
+            <li class="seat">
+              <input type="checkbox" id="4A" />
+              <label class="available" for="4A">4A</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="4B" />
+              <label class="available" for="4B">4B</label>
+            </li>
+            <li class="seat">
+              <input type="hidden" id="4C" />
+            </li>
+            <li class="seat">
+              <input type="hidden" id="4D" />
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="4E" />
+              <label class="available" for="4E">4E</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="4F" />
+              <label class="available" for="4F">4F</label>
+            </li>
+          </ol>
+        </li>
+        <li class="row row--5">
+          <ol class="seats" type="A">
+            <li class="seat">
+              <input type="checkbox" id="5A" />
+              <label class="available" for="5A">5A</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="5B" />
+              <label class="available" for="5B">5B</label>
+            </li>
+            <li class="seat">
+              <input type="hidden" id="5C" />
+            </li>
+            <li class="seat">
+              <input type="hidden" id="5D" />
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="5E" />
+              <label class="available" for="5E">5E</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="5F" />
+              <label class="available" for="5F">5F</label>
+            </li>
+          </ol>
+        </li>
+        <li class="row row--6">
+          <ol class="seats" type="A">
+            <li class="seat">
+              <input type="checkbox" id="6A" />
+              <label class="available" for="6A">6A</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="6B" />
+              <label class="available" for="6B">6B</label>
+            </li>
+            <li class="seat">
+              <input type="hidden" id="6C" />
+            </li>
+            <li class="seat">
+              <input type="hidden" id="6D" />
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="6E" />
+              <label class="available" for="6E">6E</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="6F" />
+              <label class="available" for="6F">6F</label>
+            </li>
+          </ol>
+        </li>
+        <li class="row row--7">
+          <ol class="seats" type="A">
+            <li class="seat">
+              <input type="checkbox" id="7A" />
+              <label class="available" for="7A">7A</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="7B" />
+              <label class="available" for="7B">7B</label>
+            </li>
+            <li class="seat">
+              <input type="hidden" id="7C" />
+            </li>
+            <li class="seat">
+              <input type="hidden" id="7D" />
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="7E" />
+              <label class="available" for="7E">7E</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="7F" />
+              <label class="available" for="7F">7F</label>
+            </li>
+          </ol>
+        </li>
+        <li class="row row--8">
+          <ol class="seats" type="A">
+            <li class="seat">
+              <input type="checkbox" id="8A" />
+              <label class="available" for="8A">8A</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="8B" />
+              <label class="available" for="8B">8B</label>
+            </li>
+            <li class="seat">
+              <input type="hidden" id="8C" />
+            </li>
+            <li class="seat">
+              <input type="hidden" id="8D" />
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="8E" />
+              <label class="available" for="8E">8E</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="8F" />
+              <label class="available" for="8F">8F</label>
+            </li>
+          </ol>
+        </li>
+        <li class="row row--9">
+          <ol class="seats" type="A">
+            <li class="seat">
+              <input type="checkbox" id="9A" />
+              <label class="available" for="9A">9A</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="9B" />
+              <label class="available" for="9B">9B</label>
+            </li>
+            <li class="seat">
+              <input type="hidden" id="9C" />
+            </li>
+            <li class="seat">
+              <input type="hidden" id="9D" />
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="9E" />
+              <label class="available" for="9E">9E</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="9F" />
+              <label class="available" for="9F">9F</label>
+            </li>
+          </ol>
+        </li>
+        <li class="row row--10">
+          <ol class="seats" type="A">
+            <li class="seat">
+              <input type="checkbox" id="10A" />
+              <label class="available" for="10A">10A</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="10B" />
+              <label class="available" for="10B">10B</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="10C" />
+              <label class="available" for="10C">10C</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="10D" />
+              <label class="available" for="10D">10D</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="10E" />
+              <label class="available" for="10E">10E</label>
+            </li>
+            <li class="seat">
+              <input type="checkbox" id="10F" />
+              <label class="available" for="10F">10F</label>
+            </li>
+          </ol>
+        </li>
+      </ol>
+      <div class="fuselage"></div>
+    </div>
+    <div class="flex justify-center my-2 w-200">
+      <div class="p-4 bg-white shadow-lg rounded-2xl dark:bg-gray-800">
+        <div class="flex items-center">
+          <span class="relative p-4 bg-purple-200 rounded-xl">
+            <svg
+              width="40"
+              fill="currentColor"
+              height="40"
+              class="absolute h-4 text-purple-500 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              viewBox="0 0 1792 1792"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z"
+              ></path>
+            </svg>
+          </span>
+          <p class="ml-2 text-black text-md dark:text-white">
+            Total Ticket Price
+          </p>
+        </div>
+        <div class="flex flex-col justify-start">
+          <p
+            class="my-4 text-4xl font-bold text-left text-gray-700 dark:text-gray-100"
+            id="total"
+          >
+            0
+            <span class="text-sm"> Rs. </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <button
+        id="reserve-button"
+        class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+      >
+        <span
+          class="center relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+        >
+          Book Your Reservation
+        </span>
+      </button>
+    </div>
+    <!-- price modal box -->
+    <style>
+      @import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
+    </style>
+
+    <!-- info MODAL -->
+    <div
+      class="relative z-10 hidden"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+      id="modal-container"
+      style="--state-color: green"
+    >
+      <div
+        class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+      ></div>
+
+      <div class="fixed inset-0 z-10 overflow-y-auto">
+        <div
+          class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+        >
+          <div
+            class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+          >
+            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div
+                  class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 sm:mx-0 sm:h-10 sm:w-10"
+                >
+                  <svg
+                    style="color: var(--state-color)"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="40"
+                    zoomAndPan="magnify"
+                    viewBox="0 0 30 30.000001"
+                    height="40"
+                    preserveAspectRatio="xMidYMid meet"
+                    version="1.0"
+                    id="tick"
+                  >
+                    <defs>
+                      <clipPath id="id1">
+                        <path
+                          d="M 2.328125 4.222656 L 27.734375 4.222656 L 27.734375 24.542969 L 2.328125 24.542969 Z M 2.328125 4.222656 "
+                          clip-rule="nonzero"
+                          fill="#00ff11"
+                        ></path>
+                      </clipPath>
+                    </defs>
+                    <g clip-path="url(#id1)">
+                      <path
+                        fill="#00ff11"
+                        d="M 27.5 7.53125 L 24.464844 4.542969 C 24.15625 4.238281 23.65625 4.238281 23.347656 4.542969 L 11.035156 16.667969 L 6.824219 12.523438 C 6.527344 12.230469 6 12.230469 5.703125 12.523438 L 2.640625 15.539062 C 2.332031 15.84375 2.332031 16.335938 2.640625 16.640625 L 10.445312 24.324219 C 10.59375 24.472656 10.796875 24.554688 11.007812 24.554688 C 11.214844 24.554688 11.417969 24.472656 11.566406 24.324219 L 27.5 8.632812 C 27.648438 8.488281 27.734375 8.289062 27.734375 8.082031 C 27.734375 7.875 27.648438 7.679688 27.5 7.53125 Z M 27.5 7.53125 "
+                        fill-opacity="1"
+                        fill-rule="nonzero"
+                      ></path>
+                    </g>
+                  </svg>
+                </div>
+                <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                  <h3
+                    class="text-base font-semibold leading-6 text-gray-900"
+                    id="modal-title"
+                  >
+                    bus booked
+                  </h3>
+                  <div class="mt-2">
+                    <p class="text-sm text-gray-500" id="modal-text">
+                      congrats🍾🍾
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6"
+            >
+              <button
+                type="button"
+                id="modal-button"
+                class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                style="background-color: var(--state-color)"
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="text-gray-400 bg-gray-900 body-font">
+      <div
+        class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+      >
+        <a
+          class="flex title-font font-medium items-center md:justify-start justify-center text-white"
+        >
+          <img src="./assets/logo.png" class="w-12" alt="" />
+          <span class="ml-3 text-xl">KGN AIR BUS</span>
+        </a>
+        <p
+          class="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4"
+        >
+          © 2023 KGN AIR BUS —
+          <a
+            href="https://twitter.com/knyttneve"
+            class="text-gray-500 ml-1"
+            target="_blank"
+            rel="noopener noreferrer"
+            >@KGN AIR BUS</a
+          >
+        </p>
+        <span
+          class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
+        >
+          <a class="text-gray-400">
+            <svg
+              fill="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-400">
+            <svg
+              fill="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-400">
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path
+                d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-400">
+            <svg
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="0"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="none"
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+              ></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </footer>
+    <script src="./global.js"></script>
+    <script src="./seatLayout.js"></script>
+  </body>
+</html>

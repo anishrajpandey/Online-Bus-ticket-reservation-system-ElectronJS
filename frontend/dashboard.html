@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <body>
+    <!-- NAVBARRR---------------- -->
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+      <div
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+      >
+        <a href="/" class="flex items-center">
+          <img src="/assets/logo.png" class="h-11 mr-3 invert" alt=" Logo" />
+          <span
+            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+            >KGN AIR BUS</span
+          >
+        </a>
+        <div class="flex md:order-2" id="loginButtonContainer">
+          <a href="signup.html">
+            <button
+              type="button"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Signup
+            </button>
+          </a>
+          <button
+            data-collapse-toggle="navbar-cta"
+            type="button"
+            class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-cta"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="w-6 h-6"
+              aria-hidden="true"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div
+          class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+          id="navbar-cta"
+        >
+          <ul
+            class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+          >
+            <li>
+              <a
+                href="/"
+                class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                aria-current="page"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="about.html"
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="services.html"
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                href="buses.html"
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >Our Buses</a
+              >
+            </li>
+            <li>
+              <a
+                href="contact.html"
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- dashboard -->
+
+    <div class="flex items-center justify-center " id="mainReservationContainer" >
+      <div class="w-3/5 bg-white shadow-lg min-h-screen wrap bg-gray-100 max-[600px]:w-screen " >
+        <div class="flex justify-between flex-wrap  p-4">
+          <div>
+            <h1
+              class="text-3xl italic font-extrabold tracking-widest text-indigo-500"
+            >
+              KGN air bus
+            </h1>
+            <p class="text-base">
+              If account is not paid within 2 days the credits details supplied
+              as confirmation.
+            </p>
+          </div>
+          <div class="p-2 flex flex-wrap">
+            <ul class="flex flex-wrap">
+              <li
+                class="flex flex-col items-center p-2 border-l-2 border-indigo-200"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                  />
+                </svg>
+                <span class="text-sm"> https://kgnairbus.onrender.com/ </span>
+                <span class="text-sm max-[600px]:text-[12px]">
+                  https://sarojpandey01.github.io/BusTicketReservation/
+                </span>
+              </li>
+              <li class="flex flex-col p-2 border-l-2 border-indigo-200">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                <span class="text-sm">
+                  Swoyambhu,kathmandu,nepal , 700003.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="w-full h-0.5 bg-indigo-500"></div>
+        <div class="flex justify-between p-4">
+          <div>
+            <h6 class="font-bold">
+              Order Date :
+              <span class="text-sm font-medium" id="datenow"> 12/12/2022</span>
+            </h6>
+            <h6 class="font-bold">
+              Order ID :
+              <span class="text-sm font-medium" id="random"> 29871654</span>
+            </h6>
+          </div>
+          <div class="w-40">
+            Billed To :
+            <address class="text-sm">
+              <span class="font-bold" id="name"> </span>
+            </address>
+          </div>
+          <div class="w-40">
+            Ship To :
+            <address class="text-sm">
+              <span class="font-bold" id="name1"></span>
+            </address>
+          </div>
+          <div></div>
+        </div>
+        <h1 class="text-5xl font-medium dark:text-blue-500 my-3">
+          <small class="ml-2 font-semibold text-gray-500 dark:text-gray-400">
+            Your </small
+          >Reservations
+        </h1>
+        <div id="reservationListContainer" class="flex flex-wrap"></div>
+
+        <div class="p-4 ">
+          <div class="flex items-center justify-center">
+            Thank you very much for doing business with us.
+          </div>
+          <div class="flex items-end justify-end space-x-3">
+            <button class="px-4 py-2 text-sm text-green-600 bg-green-100" onclick="downloadPDF()">
+              Print
+            </button>
+            <!-- <button class="px-4 py-2 text-sm text-blue-600 bg-blue-100">
+              Save
+            </button>
+            <button class="px-4 py-2 text-sm text-red-600 bg-red-100">
+              Cancel
+            </button> -->
+            <button
+              type="button"
+              class="px-4 py-2 text-sm text-white bg-red-500"
+             id="logoutButton"
+            >
+              LOGOUT
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+<br>
+                    <span class="block text-center">Admin?</span>
+                    <a
+                      class="ml-1 block text-center text-orange-900 hover:text-orange-700"
+                      href="./admin"
+                      >Admin page</a
+                    >
+                  </span>
+    <!-- FOOTER -->
+    <footer class="text-gray-400 bg-gray-900 body-font">
+      <div
+        class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+      >
+        <a
+          class="flex title-font font-medium items-center md:justify-start justify-center text-white"
+        >
+          <img src="./assets/logo.png" class="w-12" alt="" />
+          <span class="ml-3 text-xl">KGN AIR BUS</span>
+        </a>
+        <p
+          class="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4"
+        >
+          © 2023 KGN AIR BUS —
+          <a
+            href="https://twitter.com/knyttneve"
+            class="text-gray-500 ml-1"
+            target="_blank"
+            rel="noopener noreferrer"
+            >@KGN AIR BUS</a
+          >
+        </p>
+        <span
+          class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
+        >
+          <a class="text-gray-400">
+            <svg
+              fill="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-400">
+            <svg
+              fill="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-400">
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path
+                d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-400">
+            <svg
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="0"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="none"
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+              ></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </footer>
+    <script src="global.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      let datenow = document.getElementById("datenow");
+      let random = document.getElementById("random");
+      let name = document.getElementById("name");
+      let name1 = document.getElementById("name1");
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      let uuid = urlParams.get("userid");
+      let username = urlParams.get("name");
+      name.innerText = username;
+      name1.innerText = username;
+      random.innerHTML = uuid
+
+      //reservations
+      let data = { userid: uuid };
+      let res = fetch(`${API_URL}/getUserReservations`, {
+        method: "POST",
+        body: JSON.stringify(data),
+        cors: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((r) => r.json())
+        .then((r) => {
+          console.log(r);
+
+          r.reservations.forEach((reservation) => {
+            addReservationList(reservation);
+          });
+        });
+      let container = document.getElementById("reservationListContainer");
+
+      function addReservationList(reservation) {
+        let elem = `
+           <a 
+
+          href="#"
+          class="block min-w-60 m-8 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 max-[600px]:w-screen max-[600px]:w-screen max-[600px]:mx-0 "
+        >
+          <h5
+            class="mb-2 min-w-56 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+          >
+            ${reservation.name}
+          </h5>
+
+          <dl
+            class="max-w-md text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700"
+          >
+            <div class="flex flex-col pb-3">
+              <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
+                Bus Number
+              </dt>
+              <dd class="text-lg font-semibold">${reservation.busid}</dd>
+            </div>
+            <div class="flex flex-col py-3">
+              <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
+              Date
+              </dt>
+              <dd class="text-lg font-semibold">
+               ${reservation.date}
+
+              </dd>
+            </div>
+            <div class="flex flex-col pt-3">
+              <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
+                From
+              </dt>
+              <dd class="text-lg font-semibold">
+                ${reservation.source}
+              </dd>
+            </div>
+            <div class="flex flex-col pt-3">
+              <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
+                To
+              </dt>
+              <dd class="text-lg font-semibold">
+                ${reservation.destination}
+              </dd>
+            <div class="flex flex-col pt-3">
+              <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
+             Seats
+              </dt>
+              <dd class="text-lg font-semibold">
+               No:  ${reservation.seat}
+              </dd>
+            </div>
+            <div class="flex flex-col pt-3">
+              <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
+             Time
+              </dt>
+              <dd class="text-lg font-semibold">
+           ${reservation.time}
+              </dd>
+            </div>
+          </dl>
+        </a>`;
+        let div = document.createElement("div");
+        container.appendChild(div);
+        div.innerHTML = elem;
+      }
+document.querySelector('#logoutButton').addEventListener('click',(e)=>{
+       localStorage.setItem('kgn',JSON.stringify({authorized:false}))
+       window.location.reload()
+       window.location='/'
+      })
+   
+
+    //for downloading ticket as pdf
+function downloadPDF(){
+  var node = document.getElementById('mainReservationContainer');
+domtoimage.toPng(node)
+    .then(function (dataUrl) {
+        var img = new Image();
+        img.src = dataUrl;
+        var link = document.createElement('a');
+        link.download = 'ticket.jpeg';
+        link.href = dataUrl;
+        link.click();
+    }
+        // document.body.appendChild(img);
+    )    .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+    });
+
+
+}
+  </script>
+    </script>
+  </body>
+</html>

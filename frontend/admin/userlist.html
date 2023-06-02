@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SIGN UP</title>
+      </head>
+      <script src="https://cdn.tailwindcss.com"></script>
+
+      <body>
+        <!-- NAVBARRR---------------- -->
+        <nav class="bg-white border-gray-200 dark:bg-gray-900">
+          <div
+            class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+          >
+            <a href="/" class="flex items-center">
+              <img
+                src="/assets/logo.png"
+                class="h-11 mr-3 invert"
+                alt=" Logo"
+              />
+              <span
+                class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+                >KGN AIR BUS</span
+              >
+            </a>
+            <div class="flex md:order-2" id="loginButtonContainer">
+              <a href="login.html">
+                <button
+                  type="button"
+                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Login
+                </button>
+              </a>
+              <button
+                data-collapse-toggle="navbar-cta"
+                type="button"
+                class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-cta"
+                aria-expanded="false"
+              >
+                <span class="sr-only">Open main menu</span>
+                <svg
+                  class="w-6 h-6"
+                  aria-hidden="true"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <div
+              class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+              id="navbar-cta"
+            >
+              <ul
+                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+              >
+                <li>
+                  <a
+                    href="/admin/"
+                    class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent text-blue-700 md:p-0 md:text-blue-500"
+                    aria-current="page"
+                    >Reservations</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    href="./userlist.html"
+                    class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                    aria-current="page"
+                    >Users</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="./feedbacks.html"
+                    class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    >User FeedBacks</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="./addBus.html"
+                    class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    >Add Bus</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <!-- ADMIN SECTION------ -->
+        <div class="heading">
+          <h1
+            class="text-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-black-900 md:text-5xl lg:text-6xl dark:text-gray-900"
+          >
+            List of Users
+          </h1>
+          <p
+            class="text-center mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400"
+          >
+            Click on the user row to DELETE the user
+          </p>
+        </div>
+
+        <div class="relative overflow-x-auto my-3 p-6 p-6 min-h-screen">
+          <table
+            class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+          >
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
+              <tr>
+                <th scope="col" class="px-6 py-3">USER ID</th>
+                <th scope="col" class="px-6 py-3">NAME</th>
+                <th scope="col" class="px-6 py-3">EMAIL</th>
+                <th scope="col" class="px-6 py-3">PHONE</th>
+
+                <!-- <th scope="col" class="px-6 py-3">
+              <span class="sr-only">Edit</span>
+            </th> -->
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <!-- TO BE INSERTED WITH JAVASCRIPT -->
+              <!-- <tr
+            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-600"
+          >
+            <th
+              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-whiate"
+            >
+              na 3s kha 9079
+            </th>
+            <td class="px-6 py-4">nepal travels</td>
+            <td class="px-6 py-4">Kathmandu</td>
+            <td class="px-6 py-4">Pokhara</td>
+            <td class="px-6 py-4">2023 06 05</td>
+            <td class="px-6 py-4">10000</td>
+            <td class="px-6 py-4">00 00</td>
+          </tr> -->
+            </tbody>
+          </table>
+          <h2 id="info" style="text-align: center"></h2>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="text-gray-400 bg-gray-900 body-font">
+          <div
+            class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+          >
+            <a
+              class="flex title-font font-medium items-center md:justify-start justify-center text-white"
+            >
+              <img src="./assets/logo.png" class="w-12" alt="" />
+              <span class="ml-3 text-xl">KGN AIR BUS</span>
+            </a>
+            <p
+              class="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4"
+            >
+              © 2023 KGN AIR BUS —
+              <a
+                href="https://twitter.com/knyttneve"
+                class="text-gray-500 ml-1"
+                target="_blank"
+                rel="noopener noreferrer"
+                >@KGN AIR BUS</a
+              >
+            </p>
+            <span
+              class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
+            >
+              <a class="text-gray-400">
+                <svg
+                  fill="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  class="w-5 h-5"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                  ></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-400">
+                <svg
+                  fill="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  class="w-5 h-5"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+                  ></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-400">
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  class="w-5 h-5"
+                  viewBox="0 0 24 24"
+                >
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path
+                    d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
+                  ></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-400">
+                <svg
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0"
+                  class="w-5 h-5"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="none"
+                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+                  ></path>
+                  <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                </svg>
+              </a>
+            </span>
+          </div>
+        </footer>
+        <script src="userlist.js"></script>
+        <script src="../global.js"></script>
+      </body>
+    </html>
+  </body>
+</html>

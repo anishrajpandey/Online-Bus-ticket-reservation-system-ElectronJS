@@ -1,0 +1,23 @@
+{
+  "name": "online-bus-ticket-reservation-electron",
+  "version": "1.0.0",
+  "description": "by anish",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon --exec electron . "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anishrajpandey/Online-Bus-ticket-reservation-system.git"
+  },
+  "author": "Anish Raj Pandey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anishrajpandey/Online-Bus-ticket-reservation-system/issues"
+  },
+  "homepage": "https://github.com/anishrajpandey/Online-Bus-ticket-reservation-system#readme",
+  "dependencies": {
+    "electron": "^25.0.1",
+    "nodemon": "^2.0.22"
+  }
+}
