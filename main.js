@@ -1,15 +1,17 @@
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain } = require("electron");
+const prompt = require("electron-prompt");
 const path = require("path");
 function createWindow() {
   let win = new BrowserWindow({
-    width: 600,
+    width: 1200,
     height: 800,
     webPreferences: {
       nodeIntegration: true,
+      preload: path.join(__dirname, "./preload.js"),
     },
   });
   win.loadFile(path.join(__dirname, "./frontend/index.html"));
-
+  win.webContents.openDevTools();
   const template = [
     {
       label: "Navigate",
@@ -34,12 +36,7 @@ function createWindow() {
     },
     {
       label: "Admin",
-      submenu: [
-        {
-          label: "Reservations",
-          click: () => win.loadFile("frontend/admin/index.html"),
-        },
-      ],
+      click: () => win.loadFile("frontend/admin/index.html"),
     },
   ];
   let menu = Menu.buildFromTemplate(template);
@@ -47,6 +44,24 @@ function createWindow() {
 }
 app.whenReady().then(() => {
   createWindow();
-  mainProcess();
+  ipcMain.handle("prompt", () =>
+    prompt({
+      alwaysOnTop: true,
+      title: "Enter Admin Password to continue",
+      label: "Admin Pass",
+      value: "password",
+      inputAttrs: {
+        type: "number",
+      },
+      type: "input",
+    })
+  );
+  ipcMain.handle("confirm", () =>
+    prompt({
+      alwaysOnTop: true,
+      label: "Type 'delete' to continue",
+      title: "CONFIRM DELETE??",
+    })
+  );
+  ipcMain.handle("ping", () => "pong");
 });
-function mainProcess() {}

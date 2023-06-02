@@ -18,6 +18,7 @@
   "homepage": "https://github.com/anishrajpandey/Online-Bus-ticket-reservation-system#readme",
   "dependencies": {
     "electron": "^25.0.1",
+    "electron-prompt": "^1.7.0",
     "nodemon": "^2.0.22"
   }
 }

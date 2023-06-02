@@ -103,7 +103,7 @@
     </nav>
     <!-- hero section -->
     <section
-      class="text-gray-400 bg-gray-900 body-font bg-[url('/assets/homepagebus.jpg')] bg-cover"
+      class="text-gray-400 bg-gray-900 body-font bg-[url('./assets/homepagebus.jpg')] bg-cover"
     >
       <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
         <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
@@ -755,7 +755,7 @@
           </h2>
           <p class="leading-relaxed mb-5">We are excited to hear from you.</p>
           <div class="relative mb-4"></div>
-          <a href="/contact.html">
+          <a href="./contact.html">
             <button
               class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
             >
@@ -859,6 +859,11 @@
     </footer>
 
     <!-- Javascript code -->
+    <script>
+      console.log(
+        `This app is using Chrome (v${window.versions.chrome()}), Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
+      );
+    </script>
     <script src="script.js"></script>
     <script src="global.js"></script>
   </body>

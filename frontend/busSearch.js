@@ -82,5 +82,5 @@ function handleBusInfoClick(e) {
   let price = tableRow.children[5].innerText;
   let time = tableRow.children[6].innerText;
 
-  window.location.href = `/seatLayout.html?source=${source}&destination=${destination}&date=${date}&busid=${busno}&busname=${busName}&reservedSeats=${reservedSeats}&price=${price}&time=${time}`;
+  window.location.href = `./seatLayout.html?source=${source}&destination=${destination}&date=${date}&busid=${busno}&busname=${busName}&reservedSeats=${reservedSeats}&price=${price}&time=${time}`;
 }
