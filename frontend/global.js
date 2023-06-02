@@ -9,3 +9,15 @@ if (ISAUTHORIZED) {
   }&name=${JSON.parse(localStorage?.getItem("kgn")).Name}`;
   anchor.children[0].innerHTML = "Dashboard";
 }
+let hamBurgerBtn =
+  document.querySelector("#loginButtonContainer").children[1] ||
+  document.querySelector("#loginButtonContainer").children[0];
+
+hamBurgerBtn.addEventListener("click", toggleMenu);
+function toggleMenu() {
+  console.log("first");
+  const menu = document.querySelector("#navbar-cta");
+  const isShown = !menu.classList.contains("hidden");
+  console.log({ menu, isShown });
+  isShown ? menu.classList.add("hidden") : menu.classList.remove("hidden");
+}

@@ -63,5 +63,4 @@ app.whenReady().then(() => {
       title: "CONFIRM DELETE??",
     })
   );
-  ipcMain.handle("ping", () => "pong");
 });

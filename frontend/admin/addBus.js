@@ -60,7 +60,6 @@ addbusbtn.addEventListener("click", async () => {
     </dialog></div>`;
       document.body.innerHTML = dialog;
     }
-    window.location.reload();
   }
 });
 deletebusbtn.onclick = async () => {
