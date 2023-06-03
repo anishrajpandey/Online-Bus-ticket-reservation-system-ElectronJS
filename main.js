@@ -11,7 +11,6 @@ function createWindow() {
     },
   });
   win.loadFile(path.join(__dirname, "./frontend/index.html"));
-  win.webContents.openDevTools();
   const template = [
     {
       label: "Navigate",
