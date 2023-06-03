@@ -38,6 +38,40 @@ function createWindow() {
       label: "Admin",
       click: () => win.loadFile("frontend/admin/index.html"),
     },
+    {
+      label: "Account",
+      submenu: [
+        {
+          label: "Login",
+          click: () => win.loadFile("frontend/login.html"),
+        },
+        {
+          label: "Sign Up",
+          click: () => win.loadFile("frontend/signup.html"),
+        },
+      ],
+    },
+    {
+      label: "More options",
+      submenu: [
+        {
+          label: "Reload",
+          role: "reload",
+        },
+        {
+          label: "Toggle Dev Tools",
+          role: "toggledevtools",
+        },
+        {
+          label: "Quit",
+          role: "quit",
+        },
+        {
+          label: "Minimize",
+          role: "minimize",
+        },
+      ],
+    },
   ];
   let menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
