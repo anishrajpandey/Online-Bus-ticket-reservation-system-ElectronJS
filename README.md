@@ -14,11 +14,12 @@ ELECTRON JS
 [DOWNLOAD](https://github.com/anishrajpandey/Online-Bus-ticket-reservation-system-ElectronJS/blob/main/online-bus-ticket-reservation-electron-1.0.0%20Setup.exe)
 
 
-<br/><br/><br/><br/>
+
 #VISIT THE WEB VERSION
+<br/>
 [GO TO WEB VERSION](https://sarojpandey01.github.io/BusTicketReservation/)
 
-
+<br/><br/><br/><br/>
 
 #IMAGES
 ![image](https://github.com/anishrajpandey/Online-Bus-ticket-reservation-system-ElectronJS/assets/74363280/c01168de-3dd0-4999-ad8d-a97e010c242e)
