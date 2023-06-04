@@ -17,11 +17,11 @@ ELECTRON JS
 
 #VISIT THE WEB VERSION
 <br/>
-[GO TO WEB VERSION](https://sarojpandey01.github.io/BusTicketReservation/)
+[GO TO WEB VERSION](https://anishrajpandey.github.io/BusTicketReservation/)
 
 <br/><br/><br/><br/>
 
-#IMAGES
+!IMAGES
 ![image](https://github.com/anishrajpandey/Online-Bus-ticket-reservation-system-ElectronJS/assets/74363280/c01168de-3dd0-4999-ad8d-a97e010c242e)
 ![image](https://github.com/anishrajpandey/Online-Bus-ticket-reservation-system-ElectronJS/assets/74363280/5499e920-9cd0-4fa0-80a4-b827a934691f)
 ![image](https://github.com/anishrajpandey/Online-Bus-ticket-reservation-system-ElectronJS/assets/74363280/edced932-5a42-47fd-b55f-88ee0d5df4e0)
